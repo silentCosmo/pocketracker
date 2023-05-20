@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+
+body{
+  font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(2 6 23);/* 
+  background-color: rgb(15 23 43); */
+}
+
+.App {
+  text-align: center;
+}
+
