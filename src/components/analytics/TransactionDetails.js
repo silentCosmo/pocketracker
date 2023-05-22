@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Draggable from 'react-draggable';
+import { useDispatch } from 'react-redux';
+import { swiped } from '../../redux/pocketSlice';
 
 function TransactionDetails(details) {
   const data = details.details;
+  const dispatch = useDispatch()
   //Swipe Function
   const [dragged, setDragged] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [toDelete,setToDelete] = useState(false) /*
+  const [position, setPosition] = useState({ x: 0, y: 0 });/*
+  const [toDelete,setToDelete] = useState(false) 
   const nodeRef = useRef(null); */
 
   const handleDrag = (event, { deltaX }) => {
@@ -29,10 +32,7 @@ function TransactionDetails(details) {
   const onDelete = () =>{
     console.log('called');
     console.log(dragged);
-    setToDelete(true)
-  }
-  const handleCancel = ()=>{
-    setToDelete(false)
+    dispatch(swiped({swipe:true}))
   }
   
   return (
@@ -44,7 +44,7 @@ function TransactionDetails(details) {
         <p className={`${data.inc?"text-emerald-500":"text-pink-600"}`}>&#8377;{data.amt}</p>
     </div>
     </Draggable>
-    {toDelete?
+    {/* {toDelete?
     <div className='fixed flex items-center top-0 right-0 bottom-0 left-0 backdrop-filter backdrop-blur-sm bg-black bg-opacity-[0.01]'>
       <div className='m-auto p-3 max-w-md bg-black bg-opacity-5'>
         <div className='p-3 py-5  border-2 border-teal-950 bg-slate-900'>
@@ -57,7 +57,7 @@ function TransactionDetails(details) {
       </div>
     </div>
     :""
-    }
+    } */}
     </>
   )
 }

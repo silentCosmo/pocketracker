@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TransactionDetails from './analytics/TransactionDetails'
-import DeleteModal from './analytics/DeleteModal'
+import { useSelector } from 'react-redux';
+import DeleteModal from './analytics/DeleteModal';
 
 function History() {
+  const swiped = useSelector((state) => state.pocket.value ? state.pocket.value.payload.swipe:false)
+  useEffect(() => { ; console.log(swiped, 'redux'); }, [swiped])
   return (
     <div className='px-2 mb-4'>
         <p className='pb-1 bg-slate-900 text-teal-600 uppercase'>History</p>
@@ -29,7 +32,7 @@ function History() {
         <TransactionDetails details={{ inc:false,cat:'Health',amt:'256'}} />
         </div>
         <p className='opacity-30 mt-1'>&lt; Swipe left to delete</p>
-        
+        {swiped?<DeleteModal/>:""}
         {/* <p className='mt-20 opacity-60'>No Transactions!</p> */}
         
     </div>
