@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Draggable from 'react-draggable';
-import DeleteModal from './DeleteModal';
 
 function TransactionDetails(details) {
   const data = details.details;
