@@ -12,7 +12,7 @@ function NewTransaction() {
     console.log(isInc);
   }
   return (
-    <div className='p-2 border border-slate-900 w-min m-auto mt-2'>
+    <div className='p-2 border border-slate-900 w- m-auto mt-2'>
         <p className='uppercase text-sm bg-teal-600 p-1 text-slate-900 font-medium cursor-none'>New Transaction</p>
         <div className='mt-2'>
         <form action="">
@@ -27,7 +27,7 @@ function NewTransaction() {
                 <label htmlFor="expense" className='peer-checked:bg-teal-600 peer-checked:text-pink-950 bg-slate-950 border border-slate-900'>&nbsp;Expense</label>
               </li>
             </ul>
-            <select name="category" className='focus:border-t-teal-500 border border-slate-800 bg-slate-900 mt-2 w-36 outline-none overflow-x-visible'>
+            <select name="category" className='focus:border-t-teal-500 border border-slate-800 bg-slate-900 mt-2 w-full outline-none overflow-x-visible'>
                 <option value="" disabled selected>Category</option>
                 { isInc ?
                 <>
