@@ -19,7 +19,7 @@ function NewTransaction() {
             <ul className="flex flex-row gap-1 p-1 mt-2 justify-center border border-slate-800 bg-slate-900 list-none hover:border-t-teal-500">
               <li className='flex w-full'>
               <input type="radio" name="type" id="income" className='hidden peer' onChange={handleTransactionType} defaultChecked/>
-              <label htmlFor="income" className='py-0.5 w-full block peer-checked:bg-teal-950 peer-checked:text-teal-300 peer-checked:border-2 peer-checked:border-teal-500 bg-slate-950 border border-slate-900'>&nbsp;Income&nbsp;</label>
+              <label htmlFor="income" className='py-0.5 w-full block peer-checked:bg-teal-950 peer-checked:text-teal-300 peer-checked:border-2 peer-checked:border-teal-600 bg-slate-950 border border-slate-900'>&nbsp;Income&nbsp;</label>
               </li>
             <li className='flex w-full'>
                 <input type="radio" name="type" id="expense" className='hidden peer' onChange={handleTransactionType}/>
