@@ -18,10 +18,13 @@ export const pocketSlice = createSlice({
         swiped: (state, action)=>{
             state.value = action
         },
+        toSwipe: (state,action)=>{
+            state.value= action
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { swiped, } = pocketSlice.actions
+export const { swiped, toSwipe } = pocketSlice.actions
 
 export default pocketSlice.reducer

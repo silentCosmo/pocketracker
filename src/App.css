@@ -23,7 +23,7 @@ input::-webkit-inner-spin-button {
 }
 
 ::-webkit-scrollbar{
-  width: 0.2rem;
+  width: 0.3rem;
 }
 ::-webkit-scrollbar-thumb{
   background-color: rgb(16, 114, 114);

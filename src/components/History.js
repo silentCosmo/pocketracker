@@ -13,7 +13,7 @@ function History() {
         <TransactionDetails details={{inc:true,cat:'salary',amt:'7367'}} />
         <TransactionDetails details={{ inc:false,cat:'Entertaiment',amt:'456'}} />
         <TransactionDetails details={{ inc:false,cat:'shopping',amt:'556'}} />
-        <TransactionDetails details={{ inc:true,cat:'gift',amt:'38'}} />
+        <TransactionDetails details={{ inc:true,cat:'Gift',amt:'38'}} />
         <TransactionDetails details={{ inc:false,cat:'Health',amt:'256'}} />
         
         <TransactionDetails details={{ inc:false,cat:'Health',amt:'256'}} />
