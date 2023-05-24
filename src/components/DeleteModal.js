@@ -1,11 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { swiped } from '../../redux/pocketSlice'
+import { swiped } from '../redux/pocketSlice'
 
 function DeleteModal() {
     const dispatch = useDispatch()
     const handleCancel = () => {
-        dispatch(swiped({ swipe: false }))
+        dispatch(swiped(false))
     }
   return (
       <div className='fixed flex items-center top-0 right-0 bottom-0 left-0 backdrop-filter backdrop-blur-sm bg-black bg-opacity-[0.01]'>
@@ -13,7 +13,7 @@ function DeleteModal() {
               <div className='p-3 py-5  border-2 border-teal-950 bg-slate-900'>
                   <p className='text-lg'>Are you sure to remove the transaction?</p>
                   <div className='flex justify-around mt-5 text-slate-950'>
-                      <button className='px-3 p-1 bg-teal-600' onClick={handleCancel}>Cancel</button>
+                      <button className='px-3 p-1 bg-teal-600 hover:bg-teal-700' onClick={handleCancel}>Cancel</button>
                       <button className='px-3 p-1 bg-red-600'>Delete</button>
                   </div>
               </div>

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    value: 0,
+    value:0,
+    history:[],
 }
 
 export const pocketSlice = createSlice({
@@ -16,15 +17,23 @@ export const pocketSlice = createSlice({
             state.value += 1
         } */
         swiped: (state, action)=>{
-            state.value = action
+            state.swiped = action.payload
         },
-        toSwipe: (state,action)=>{
-            state.value= action
-        }
+        toSwipe: (state, action)=>{
+            state.toswipe = action.payload
+        },
+        history:(state, action)=>{
+            //Generate NewID
+            const newId = state.history.length + 1 
+            const newItem = {id:newId,...action.payload}
+            //Update History
+            state.history = [...state.history,newItem]
+            console.log('redux', state.history)
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { swiped, toSwipe } = pocketSlice.actions
+export const { swiped, toSwipe, history } = pocketSlice.actions
 
 export default pocketSlice.reducer

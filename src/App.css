@@ -29,5 +29,6 @@ input::-webkit-inner-spin-button {
   background-color: rgb(16, 114, 114);
 }
 ::-webkit-scrollbar-track{
-  background-color: rgb(0, 49, 49);
+  background-color: rgb(15, 23, 42);
+  /* background-color: rgb(0, 49, 49); */
 }
