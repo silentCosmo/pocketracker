@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     value:0,
     history:[],
-    overview:98,
 }
 
 export const pocketSlice = createSlice({
@@ -25,13 +24,19 @@ export const pocketSlice = createSlice({
             console.log('redux', state.history)
             //Statistics
             const history = state.history
-            const incomeTotal = history.reduce((total,obj)=>{
+            const income = history.reduce((total,obj)=>{
                 if(obj.type==='income'){
                 return total + obj.amount;
             }
                 return total
             }, 0)
-            state.overview = { income: incomeTotal, expense: 0, balance: 0 }
+            const expense = history.reduce((total,obj)=>{
+                if(obj.type==='expense'){
+                return total + obj.amount;
+            }
+                return total
+            }, 0)
+            state.overview = { income: income, expense: expense, balance: 0 }
             console.log( "over", state.overview);
         },
         statistics: (state, action)=>{
