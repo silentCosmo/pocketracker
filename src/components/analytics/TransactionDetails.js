@@ -75,17 +75,17 @@ function TransactionDetails(details) {
     {
     toDrag?
         <Draggable axis='x' position={position} onDrag={handleDrag} onStop={handleDragStop}>
-        <div className={`bg-opacity- border-l-[0.3rem] w-64 p-1 mr-2 flex justify-between cursor-pointer ${toDrag ? 'bg-slate-900' : 'bg-slate-950'} ${data.inc ? 'border-emerald-500' : 'border-pink-700'}`} onMouseLeave={handleUnClick}  onTouchEnd={handleUnClick} >
-        <p>22/5/2023</p>
+        <div className={`bg-opacity-25 border-l-[0.3rem] w-72 p-1 mr-2 flex justify-between cursor-pointer ${toDrag ? 'bg-slate-900' : 'bg-slate-950'} ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`} onMouseLeave={handleUnClick}  onTouchEnd={handleUnClick} >
+        <p>{data.date}</p>
         <p>{data.category}</p>
-        <p className={`${data.inc?"text-emerald-500":"text-pink-600"}`}>&#8377;{data.amount}</p>
+        <p className={`${data.type === "income"?"text-emerald-500":"text-pink-600"}`}>&#8377;{data.amount}</p>
     </div>
     </Draggable>
     :
-      < div className={`bg-slate-950 border-l-[0.3rem] w-64 p-1 mr-2 flex justify-between cursor-pointer ${data.inc ? 'border-emerald-500' : 'border-pink-700'}`}  onClick={handleClick}>
+      <div className={`bg-slate-950 border-l-[0.3rem] w-72 p-1 mr-2 flex justify-between cursor-pointer ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`}  onClick={handleClick}>
       <p>{data.date}</p>
       <p>{data.category}</p>
-      <p className={`${data.inc ? "text-emerald-500" : "text-pink-600"}`}>&#8377;{data.amount}</p>
+      <p className={`${data.type === "income" ? "text-emerald-500" : "text-pink-600"}`}>&#8377;{data.amount}</p>
     </div >
     }
     </>

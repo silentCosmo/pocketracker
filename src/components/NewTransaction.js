@@ -31,8 +31,7 @@ function NewTransaction() {
     console.log('Sumit_captured');
     console.log('data: ',formValues);
 
-    const id = Date.now()
-    const formData = {idx:id,...formValues}
+    const formData = {...formValues}
     dispatch(history(formData))
 
   }
