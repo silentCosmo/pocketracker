@@ -23,7 +23,7 @@ function History() {
           </div>
           :
           history.map((his)=>{
-            return <TransactionDetails details={
+            return <TransactionDetails key={his.id} details={
               { id:his.id,
                 date:his.date,
                 type:his.type,

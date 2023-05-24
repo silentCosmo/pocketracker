@@ -20,7 +20,7 @@ function NewTransaction() {
   const updateForm = (e) => {
     console.log(e.target.name,e.target.value);
     const input = e.target.name
-    const value = e.target.value
+    const value = e.target.name==='amount'? parseInt(e.target.value) : e.target.value 
     setFormValues({...formValues,[input]:value})
   }
     const newId = useSelector((state)=>state.pocket.newId)
