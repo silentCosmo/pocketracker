@@ -81,8 +81,8 @@ function NewTransaction() {
                 <option value="Medicine">Medicine</option>
                 <option value="Insurance">Insurance</option>
                 <option value="Education">Education</option>
-                <option value="Health Care">Healthcare</option>
-                <option value="Suscriptions">Suscriptions</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Subscriptions">Subscriptions</option>
                 <option value="Entertaiment">Entertaiment</option>
                 <option value="Unspecified">Other</option>
                 </>
