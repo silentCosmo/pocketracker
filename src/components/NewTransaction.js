@@ -19,9 +19,19 @@ function NewTransaction() {
   const [formValues,setFormValues] = useState({type:'income'})
   const updateForm = (e) => {
     console.log(e.target.name,e.target.value);
-    const input = e.target.name
-    const value = e.target.name==='amount'? parseInt(e.target.value) : e.target.value 
-    setFormValues({...formValues,[input]:value})
+    if (e.target.name==='amount'){
+      const input = e.target.name
+      const value = parseInt(e.target.value)
+
+      if (e.target.value.length<=6){setFormValues({...formValues,[input]:value})}
+      
+    }else{
+      const input = e.target.name
+      const value = e.target.value 
+      setFormValues({...formValues,[input]:value})
+    }
+    
+    console.log(e.target.value.length);
   }
     const newId = useSelector((state)=>state.pocket.newId)
     console.log('idGen',newId);
@@ -36,7 +46,7 @@ function NewTransaction() {
 
   }
   return (
-    <div className='p-2 border border-slate-900 w- m-auto mt-2'>
+    <div className='p-2 border border-opacity-50 border-slate-900 w- m-auto mt-2'>
         <p className='uppercase text-sm bg-teal-600 p-1 text-slate-900 font-medium cursor-none'>New Transaction</p>
         <div className='mt-2'>
         <form onSubmit={handleSubmit} >
@@ -78,7 +88,7 @@ function NewTransaction() {
                 </>
                 }
             </select>
-            <input type="number" onChange={updateForm} name="amount" className='p-0.5 focus:border-b-teal-500 border border-slate-800 bg-slate-900 outline-none text-center w-full mt-2 appearance-none' placeholder='Amount' required/>
+            <input type="number" onChange={updateForm} value={formValues.amount} name="amount" className='p-0.5 focus:border-b-teal-500 border border-slate-800 bg-slate-900 outline-none text-center w-full mt-2 appearance-none' placeholder='Amount' maxLength="3" required/>
             <input type="submit" value="Create" className='p-0.5 bg-teal-600 text-slate-900 mt-2 w-full hover:bg-teal-500 active:bg-teal-400'/>
         </form>
         </div>
