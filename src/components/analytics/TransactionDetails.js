@@ -45,7 +45,9 @@ function TransactionDetails(details) {
   }
 
   //Swipe Functions
+  const [delBg,setDelBg] = useState(0)
   const handleDrag = (event, { deltaX }) => {
+    setDelBg(deltaX)
     /* console.log('onDrag', deltaX); */
     if (deltaX < -6) {
       setDragged(true);
@@ -69,18 +71,21 @@ function TransactionDetails(details) {
     console.log(dragged);
     dispatch(swiped({swipe:true}))
   }
-  
   return (
     <>
     {
     toDrag?
-        <Draggable axis='x' position={position} onDrag={handleDrag} onStop={handleDragStop}>
-        <div className={`bg-opacity-25 border-l-[0.3rem] w-72 p-1 mr-2 flex justify-between cursor-pointer ${toDrag ? 'bg-slate-900' : 'bg-slate-950'} ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`} onMouseLeave={handleUnClick}  onTouchEnd={handleUnClick} >
+    <div className={`${delBg===0?'':'bg-red-900'}  w-72 mr-2 py-1 flex relative`}>
+      <p className='relative ml-auto mr-8 text-slate-00'>Delete</p>
+      <Draggable axis='x' className='absolute w-72' position={position} onDrag={handleDrag} onStop={handleDragStop}>
+        <div className="z- py-3 flex absolute mt-[-1rem]">
+        <div className={`bg-opacity-  absolute w-72 p-1 mr-2 flex justify-between cursor-pointer border-l-[0.3rem]  ${toDrag ? 'bg-slate-950' : 'bg-slate-950'} ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`} onMouseLeave={handleUnClick}  onTouchEnd={handleUnClick} >
         <p>{data.date}</p>
         <p>{data.category}</p>
         <p className={`${data.type === "income"?"text-emerald-500":"text-pink-600"}`}>&#8377;{data.amount}</p>
-    </div>
+        </div></div>
     </Draggable>
+    </div>
     :
       <div className={`bg-slate-950 border-l-[0.3rem] w-72 p-1 mr-2 flex justify-between cursor-pointer ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`}  onClick={handleClick}>
       <p>{data.date}</p>
