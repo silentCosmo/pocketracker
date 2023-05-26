@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { history } from '../redux/pocketSlice'
 
 function NewTransaction() {
@@ -14,7 +14,6 @@ function NewTransaction() {
     }
     console.log(isInc);
   }
-  console.log(Date.now());
   //Form Values
   const [formValues,setFormValues] = useState({type:'income'})
   const updateForm = (e) => {
@@ -31,16 +30,10 @@ function NewTransaction() {
       setFormValues({...formValues,[input]:value})
     }
     
-    console.log(e.target.value.length);
   }
-    const newId = useSelector((state)=>state.pocket.newId)
-    console.log('idGen',newId);
   //Submit Functions
   const handleSubmit = (e) =>{
     e.preventDefault()
-    console.log('Sumit_captured');
-    console.log('data: ',formValues);
-
     const formData = {...formValues}
     dispatch(history(formData))
 

@@ -1,18 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { updateOverView } from './OverView';
+import { db } from '../database/LocalDatabase';
 
-const test = [{id: 1, type: 'expense', date: '2023-05-20', category: 'Dept', amount: 500},
-    {id: 2, type: 'expense', date: '2023-05-20', category: 'Dept', amount: 500},
+const test = [
+    {id: 1, type: 'expense', date: '2023-05-20', category: 'Dept', amount: 500},
+    {id: 2, type: 'expense', date: '2023-05-20', category: 'Food', amount: 500},
     {id: 3, type: 'income', date: '2023-05-11', category: 'Freelance', amount: 1000},
-    {id: 4, type: 'income', date: '2023-05-11', category: 'Freelance', amount: 1000}, 
-    {id: 5, type: 'income', date: '2023-05-11', category: 'Freelance', amount: 1000}
+    {id: 5, type: 'income', date: '2023-05-11', category: 'Freelance', amount: 1000},
+    {id: 4, type: 'income', date: '2023-05-11', category: 'Investment', amount: 1000}
     ]
     console.log('DemoData:',test);
 
+const localHistory = db.get('history')
+const localOverview = updateOverView(localHistory)
+
 const initialState = {
     value:0,
-    overview:null,
-    history:[],
+    overview:localOverview,
+    history:[...localHistory],
 }
 
 export const pocketSlice = createSlice({
@@ -34,7 +39,8 @@ export const pocketSlice = createSlice({
             console.log('redux', state.history)
             //Statistics
             state.overview = updateOverView(state.history)
-            
+            //Update to localStorage
+            db.update(state.history)
         },
         onDelete: (state, action)=>{
             const ohistory = state.history
@@ -44,7 +50,9 @@ export const pocketSlice = createSlice({
             state.swiped = false
             //Update delete to History
             state.overview = updateOverView(updatedHistory)
-        },
+            //Update to localStorage
+            db.update(updatedHistory)
+        }, 
     },
 })
 // Action creators are generated for each case reducer function
