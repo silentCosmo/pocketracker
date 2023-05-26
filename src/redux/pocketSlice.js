@@ -36,7 +36,6 @@ export const pocketSlice = createSlice({
             const newItem = {id:newId,...action.payload}
             //Update History
             state.history = [...state.history,newItem]
-            console.log('redux', state.history)
             //Statistics
             state.overview = updateOverView(state.history)
             //Update to localStorage

@@ -9,11 +9,9 @@ function TransactionDetails(details) {
 
   //Drag States
   const [dragged, setDragged] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });/*
-  const [toDrag,setToDrag] = useState(false)
-  const [toDelete,setToDelete] = useState(false) 
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const toDrag = useSelector((state)=>state.pocket.toswipe)/* 
   const nodeRef = useRef(null); */
-  const toDrag = useSelector((state)=>state.pocket.toswipe)
 
   //Fix Scroll Problem
   useEffect(() => {
@@ -73,18 +71,27 @@ function TransactionDetails(details) {
       <Draggable axis='x' className='absolute w-72' position={position} onDrag={handleDrag} onStop={handleDragStop}>
         <div className="py-3 flex absolute mt-[-1rem]">
         <div className={`absolute w-72 p-1 mr-2 flex justify-between cursor-pointer border-l-[0.3rem]  ${toDrag ? 'bg-slate-950' : 'bg-slate-950'} ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`} onMouseLeave={handleUnClick}  onTouchEnd={handleUnClick} >
-        <p>{data.date}</p>
-        <p>{data.category}</p>
-        <p className={`${data.type === "income"?"text-emerald-500":"text-pink-600"}`}>&#8377;{data.amount.toLocaleString()}</p>
-        </div></div>
+          <div className="w-[5.5rem] flex justify-start mr-1">
+          <p className=''>{data.date}</p></div>
+          <div className="w-[7.5rem] flex justify-center border-l border-slate-900">
+          <p>{data.category}</p></div>
+          <div className="w-20 flex justify-end border-l border-slate-900">
+          <p className={`${data.type === "income" ? "text-emerald-500" : "text-pink-600"}`}>&#8377;{data.amount.toLocaleString()}</p>
+          </div>
+        </div>
+        </div>
     </Draggable>
     </div>
     :
-      <div className={`bg-slate-950 border-l-[0.3rem] w-72 p-1 mr-2 flex justify-between cursor-pointer ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`}  onClick={handleClick}>
-      <p>{data.date}</p>
-      <p>{data.category}</p>
+    <div className={`bg-slate-950 border-l-[0.3rem] w-72 p-1 mr-2 flex justify-stretc cursor-pointer ${data.type === "income" ? 'border-emerald-500' : 'border-pink-700'}`}  onClick={handleClick}>
+      <div className="w-[5.5rem] flex justify-start mr-1">
+      <p className=''>{data.date}</p></div>
+      <div className="w-[7.5rem] flex justify-center border-l border-slate-950">
+      <p>{data.category}</p></div>
+      <div className="w-20 flex justify-end border-l border-slate-950">
       <p className={`${data.type === "income" ? "text-emerald-500" : "text-pink-600"}`}>&#8377;{data.amount.toLocaleString()}</p>
-    </div >
+      </div>
+    </div>
     }
     </>
   )
