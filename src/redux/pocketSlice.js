@@ -11,13 +11,13 @@ const test = [
     ]
     console.log('DemoData:',test);
 
-//const localHistory = db.get('history')
+const localHistory = db.get('history')?db.get('history'):[]
 //const localOverview = updateOverView(localHistory)
 
 const initialState = {
     value:0,
     overview:null,
-    history:[],
+    history:[...localHistory],
 }
 
 export const pocketSlice = createSlice({
