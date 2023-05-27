@@ -16,8 +16,8 @@ const localOverview = updateOverView(localHistory)
 
 const initialState = {
     value:0,
-    overview:localOverview,
-    history:[...localHistory],
+    overview:null,
+    history:[],
 }
 
 export const pocketSlice = createSlice({
