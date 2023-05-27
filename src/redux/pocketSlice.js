@@ -11,8 +11,8 @@ const test = [
     ]
     console.log('DemoData:',test);
 
-const localHistory = db.get('history')
-const localOverview = updateOverView(localHistory)
+//const localHistory = db.get('history')
+//const localOverview = updateOverView(localHistory)
 
 const initialState = {
     value:0,
