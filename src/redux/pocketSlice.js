@@ -12,11 +12,11 @@ const test = [
     console.log('DemoData:',test);
 
 const localHistory = db.get('history')?db.get('history'):[]
-//const localOverview = updateOverView(localHistory)
+const localOverview = updateOverView(localHistory)?updateOverView(localHistory):null
 
 const initialState = {
     value:0,
-    overview:null,
+    overview:localOverview,
     history:[...localHistory],
 }
 
