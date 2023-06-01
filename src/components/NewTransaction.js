@@ -59,6 +59,7 @@ function NewTransaction() {
                 { isInc ?
                 <>
                 <option value="Gift">Gift</option>
+                <option value="wages">Wages</option>
                 <option value="Salary">Salary</option>
                 <option value="Freelance">Frelance</option>
                 <option value="Investment">Investment</option>
