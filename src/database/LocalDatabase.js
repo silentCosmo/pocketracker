@@ -9,6 +9,18 @@ export const db = {
     get: (key) => {
         return JSON.parse(localStorage.getItem(key))
     },
+    archive: (month) => {
+        //Get the datas
+       const monthly = JSON.parse(localStorage.getItem('history'))
+       const yearly = JSON.parse(localStorage.getItem('YearlyHistory'))
+       //Archive current month data to earlyHistory
+       localStorage.removeItem('YearlyHistory')
+       const data = {...yearly,[month]:monthly,}
+       localStorage.setItem('YearlyHistory',JSON.stringify(data))
+    },
+    reset: () => {
+        localStorage.setItem('history',JSON.stringify([]))
+    },
     delete:() => {
         // COMMING Soon
     }
